@@ -28,7 +28,7 @@ class NetworkRequest {
     try {
       final allProductResponse = await dio.get(ApiEndPoints.getAllProducts);
 
-      print(allProductResponse.data);
+      // print(allProductResponse.data);
 
 
       print('Status code: ${allProductResponse.statusCode}');

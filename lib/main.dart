@@ -1,6 +1,5 @@
-import 'dart:convert';
-
 import 'package:e_commerce/config/network/networkRequest.dart';
+import 'package:e_commerce/feature/home_page/presentation/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,30 +14,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ElevatedButton(
-            onPressed: () async{
-             var response = await NetworkRequest.getAllProduct();
-
-             print(response);
-            },
-            child: Text('Get Products'),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(100.0),
+            ),
           ),
-        ],
+          color: Color.fromRGBO(255, 100, 19, 0.5),
+        ),
+
       ),
+      home: HomePage(),
     );
   }
 }
