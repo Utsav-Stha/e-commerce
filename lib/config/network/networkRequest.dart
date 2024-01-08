@@ -1,18 +1,12 @@
-import 'dart:convert';
-
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:e_commerce/config/network/apiEndpoints.dart';
-import 'package:e_commerce/feature/products/allProductsModel.dart';
-import 'package:flutter/cupertino.dart';
-
-
 
 class NetworkRequest {
   static late Dio dio;
 
   NetworkRequest() {
     dio = Dio(baseOptions());
-
   }
 
   BaseOptions baseOptions() {
@@ -29,13 +23,11 @@ class NetworkRequest {
       final allProductResponse = await dio.get(ApiEndPoints.getAllProducts);
 
       // print(allProductResponse.data);
-
-
-      print('Status code: ${allProductResponse.statusCode}');
+      // print('Status code: ${allProductResponse.statusCode}');
       return allProductResponse.data;
       // return AllProductsModel.fromJson(allProductResponse.data);
     } catch (e) {
-      print('Error in getAllProduct: $e');
+      log('Error in getAllProduct: $e');
       return null;
     }
   }
@@ -47,10 +39,10 @@ class NetworkRequest {
       }
 
       final oneProductResponse = await dio.get(ApiEndPoints.getOneProduct);
-      print('Status code: ${oneProductResponse.statusCode}');
-      print(oneProductResponse.data[index]);
+      log('Status code: ${oneProductResponse.statusCode}');
+      log(oneProductResponse.data[index]);
     } catch (e) {
-      print('Error in getOneProduct: $e');
+      log('Error in getOneProduct: $e');
     }
   }
 }
