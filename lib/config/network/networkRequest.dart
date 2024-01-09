@@ -32,7 +32,7 @@ class NetworkRequest {
     }
   }
 
-  Future<void> getOneProduct({required int index}) async {
+  static Future<void> getOneProduct({int? index}) async {
     try {
       if (dio == null) {
         throw Exception("Dio instance not initialized.");

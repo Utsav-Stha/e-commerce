@@ -1,25 +1,28 @@
 import 'package:e_commerce/core/widgets/empty_cart.dart';
+import 'package:e_commerce/feature/cart_page/domain/cart_provider.dart';
+import 'package:e_commerce/feature/cart_page/presentation/cart_list.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
-  CartPage({super.key, cartItem});
-  final List? cartItem = [];
+  const CartPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(child: cartItem!.isNotEmpty ? CartList() : EmptyCart()),
-    );
-  }
-}
-
-class CartList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('This is cart list'),
+      body: Consumer<CartProvider>(
+        builder: (context, cartProviderModel, child) {
+          return Center(
+            child: cartProviderModel.cartItemList.isNotEmpty
+                ? const CartList()
+                : const EmptyCart(),
+          );
+        },
+      ),
     );
   }
 }

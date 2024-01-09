@@ -1,4 +1,6 @@
+import 'package:e_commerce/feature/cart_page/domain/cart_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductDisplayCard extends StatelessWidget {
   const ProductDisplayCard({super.key, required this.data});
@@ -40,12 +42,18 @@ class ProductDisplayCard extends StatelessWidget {
                 ),
               ],
             ),
-            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.favorite_outline_outlined),
-              ),
-            ])
+            Consumer<CartProvider>(
+              builder: (context, cartProviderModel, child) {
+                return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                  IconButton(
+                    onPressed: () {
+                      cartProviderModel.addProduct(data['id']);
+                    },
+                    icon: const Icon(Icons.favorite_outline_outlined),
+                  ),
+                ]);
+              },
+            )
           ],
         ),
       ),
