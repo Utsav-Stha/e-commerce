@@ -1,4 +1,5 @@
 import 'package:e_commerce/config/network/networkRequest.dart';
+import 'package:e_commerce/core/widgets/product_display_card.dart';
 import 'package:e_commerce/feature/cart_page/domain/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,16 +11,26 @@ class CartList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CartProvider>(
       builder: (context, cartProviderModel, child) => FutureBuilder(
-        future: NetworkRequest.getOneProduct(),
+        future: NetworkRequest.getAllProduct(),
         builder: (context, snapshot) {
-          return ListView.builder(
-            itemCount: cartProviderModel.cartItemList.length,
-            itemBuilder: (context, index) {
-              return Card(
-                child: Text(index.toString()),
-              );
-            },
-          );
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text(snapshot.hasError.toString()),
+            );
+          } else {
+            return ListView.builder(
+              itemCount: cartProviderModel.cartItemList.length,
+              itemBuilder: (context, index) {
+                var retrievedData = snapshot.data?[index];
+
+                return ProductDisplayCard(data: retrievedData);
+              },
+            );
+          }
         },
       ),
     );

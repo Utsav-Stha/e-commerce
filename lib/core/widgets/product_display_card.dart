@@ -17,10 +17,9 @@ class ProductDisplayCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   width: 170,
                   child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(data['title'].toString(),
                           softWrap: true, overflow: TextOverflow.ellipsis),
@@ -31,7 +30,7 @@ class ProductDisplayCard extends StatelessWidget {
                 Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.only(right: 30.0),
+                      padding: const EdgeInsets.only(right: 30.0),
                       height: 150,
                       width: 150,
                       child: Image.network(
@@ -47,7 +46,7 @@ class ProductDisplayCard extends StatelessWidget {
                 return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                   IconButton(
                     onPressed: () {
-                      cartProviderModel.addProduct(data['id']);
+                      cartProviderModel.addProduct(data);
                     },
                     icon: const Icon(Icons.favorite_outline_outlined),
                   ),
