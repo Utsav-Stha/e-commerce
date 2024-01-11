@@ -25,20 +25,35 @@ class HomePage extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: snapshot.data?.length ?? 0,
-                    itemBuilder: (context, index) {
-                      Map<String, dynamic> retrievedData =
-                          snapshot.data?[index];
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ProductDisplayCard(data: retrievedData),
-                      );
-                    },
-                  )
+                  Container(
+                    height: DeviceSize.getHeight(context) * 0.83,
+                    child: ListView.builder(
+                      // physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: snapshot.data?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        Map<String, dynamic> retrievedData =
+                            snapshot.data?[index];
+                        return Padding(
+                          padding: const EdgeInsets.all(14.0),
+                          child: ProductDisplayCard(data: retrievedData),
+                        );
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Padding(
+                        padding: EdgeInsets.all(12.0),
+                        child: Text('Checkout'),
+                      ),
+                    ),
+                  ),
                 ],
               );
             } else if (snapshot.hasError) {
