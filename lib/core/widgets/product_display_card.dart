@@ -45,10 +45,13 @@ class ProductDisplayCard extends StatelessWidget {
               builder: (context, cartProviderModel, child) {
                 return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                   IconButton(
+                    color: Colors.redAccent,
                     onPressed: () {
                       cartProviderModel.addProduct(data);
                     },
-                    icon: const Icon(Icons.favorite_outline_outlined),
+                    icon: const Icon(
+                      Icons.favorite_outline_outlined,
+                    ),
                   ),
                 ]);
               },
