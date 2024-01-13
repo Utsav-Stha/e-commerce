@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/widgets/empty_cart.dart';
-import 'package:e_commerce/feature/cart_page/domain/cart_provider.dart';
+import 'package:e_commerce/core/providers/cart_provider.dart';
 import 'package:e_commerce/feature/cart_page/presentation/cart_list.dart';
 
 import 'package:flutter/material.dart';

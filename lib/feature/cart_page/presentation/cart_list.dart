@@ -1,6 +1,6 @@
 import 'package:e_commerce/config/network/networkRequest.dart';
 import 'package:e_commerce/core/widgets/product_display_card.dart';
-import 'package:e_commerce/feature/cart_page/domain/cart_provider.dart';
+import 'package:e_commerce/core/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

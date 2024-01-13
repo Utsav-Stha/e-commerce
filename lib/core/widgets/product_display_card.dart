@@ -1,5 +1,4 @@
-import 'package:e_commerce/core/providers/cart_item_count_provider.dart';
-import 'package:e_commerce/feature/cart_page/domain/cart_provider.dart';
+import 'package:e_commerce/core/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -43,17 +42,12 @@ class ProductDisplayCard extends StatelessWidget {
               ],
             ),
             Consumer<CartProvider>(
-              builder: (
-                context,
-                cartProviderModel,
-                child,
-              ) {
+              builder: (context, cartProviderModel, child) {
                 return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                   IconButton(
                     color: Colors.redAccent,
                     onPressed: () {
                       cartProviderModel.addProduct(data);
-                      // cartItemCountProviderModel.itemIncrementCounter();
                     },
                     icon: const Icon(
                       Icons.favorite_outline_outlined,
