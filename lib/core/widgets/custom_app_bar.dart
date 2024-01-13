@@ -1,4 +1,7 @@
+import 'package:e_commerce/core/providers/cart_item_count_provider.dart';
+import 'package:e_commerce/feature/cart_page/domain/cart_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../feature/cart_page/presentation/cart_page.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -19,15 +22,22 @@ class CustomAppBar extends StatelessWidget {
           padding: const EdgeInsets.only(right: 14.0),
           child: Stack(
             children: [
-              const Positioned(
+              Positioned(
                 right: -1.0,
-                child: CircleAvatar(
-                  radius: 8,
-                  child: Text(
-                    '2',
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700),
-                  ),
-                ),
+                child: Consumer<CartProvider>(
+                    builder: (context, cartProviderModel, child) =>
+                        cartProviderModel.cartItemList.isEmpty
+                            ? const Text('')
+                            : CircleAvatar(
+                                radius: 8,
+                                child: Text(
+                                  cartProviderModel.cartItemList.length
+                                      .toString(),
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              )),
               ),
               IconButton(
                 onPressed: () {
