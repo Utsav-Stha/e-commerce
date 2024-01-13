@@ -17,15 +17,30 @@ class CustomAppBar extends StatelessWidget {
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 14.0),
-          child: IconButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CartPage(),
-                  ));
-            },
-            icon: const Icon(Icons.shopping_cart_outlined),
+          child: Stack(
+            children: [
+              const Positioned(
+                right: -1.0,
+                child: CircleAvatar(
+                  radius: 8,
+                  child: Text(
+                    '2',
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700),
+                  ),
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CartPage(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.shopping_cart_outlined),
+              ),
+            ],
           ),
         )
       ],
