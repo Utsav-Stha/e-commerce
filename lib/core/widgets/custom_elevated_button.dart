@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/styling/elevated_button_themes.dart';
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -9,14 +10,7 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: const ButtonStyle(
-        backgroundColor: MaterialStatePropertyAll(
-          Color.fromRGBO(255, 100, 19, 0.3),
-        ),
-        foregroundColor: MaterialStatePropertyAll(
-          Color.fromRGBO(255, 255, 255, 1),
-        ),
-      ),
+      style: ElevatedButtonThemes.light,
       onPressed: () {
         Navigator.pushReplacement(
             context,
@@ -24,7 +18,13 @@ class CustomElevatedButton extends StatelessWidget {
               builder: (context) => navigationWidget,
             ));
       },
-      child: Text(buttonText),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Text(
+          buttonText,
+          style: TextStyle(letterSpacing: 3.0),
+        ),
+      ),
     );
   }
 }

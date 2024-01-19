@@ -1,6 +1,7 @@
 import 'package:e_commerce/config/network/networkRequest.dart';
 import 'package:e_commerce/core/app_constants/device_size.dart';
 import 'package:e_commerce/core/widgets/custom_app_bar.dart';
+import 'package:e_commerce/core/widgets/custom_elevated_button.dart';
 import 'package:e_commerce/core/widgets/product_display_card.dart';
 import 'package:flutter/material.dart';
 
@@ -44,16 +45,11 @@ class HomePage extends StatelessWidget {
                       },
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Text('Checkout'),
-                      ),
-                    ),
-                  ),
+                  Container(
+                      color: Colors.transparent,
+                      padding: EdgeInsets.all(8.0),
+                      child: const CustomElevatedButton(
+                          buttonText: 'Checkout', navigationWidget: Text(''))),
                 ],
               );
             } else if (snapshot.hasError) {

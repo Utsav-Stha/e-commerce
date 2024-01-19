@@ -36,7 +36,7 @@ class ProductDisplayCard extends StatelessWidget {
                         padding: EdgeInsets.fromLTRB(20.0, 8.0, 0, 8.0),
                         color: Colors.white,
                         child: Stack(
-                          alignment: Alignment(1, -1),
+                          alignment: Alignment(1.1, -1.1),
                           children: [
                             Container(
                               padding: const EdgeInsets.only(right: 30.0),
@@ -50,18 +50,19 @@ class ProductDisplayCard extends StatelessWidget {
                             Consumer<CartProvider>(
                               builder: (context, cartProviderModel, child) {
                                 return Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      IconButton(
-                                        color: Color.fromRGBO(13, 27, 42, 1),
-                                        onPressed: () {
-                                          cartProviderModel.addProduct(data);
-                                        },
-                                        icon: const Icon(
-                                          Icons.favorite_outline_outlined,
-                                        ),
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    IconButton(
+                                      color: Color.fromRGBO(13, 27, 42, 1),
+                                      onPressed: () {
+                                        cartProviderModel.addProduct(data);
+                                      },
+                                      icon: const Icon(
+                                        Icons.favorite_outline_outlined,
                                       ),
-                                    ]);
+                                    ),
+                                  ],
+                                );
                               },
                             )
                           ],
@@ -72,21 +73,6 @@ class ProductDisplayCard extends StatelessWidget {
                 ),
               ],
             ),
-            // Consumer<CartProvider>(
-            //   builder: (context, cartProviderModel, child) {
-            //     return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-            //       IconButton(
-            //         color: Colors.redAccent,
-            //         onPressed: () {
-            //           cartProviderModel.addProduct(data);
-            //         },
-            //         icon: const Icon(
-            //           Icons.favorite_outline_outlined,
-            //         ),
-            //       ),
-            //     ]);
-            //   },
-            // )
           ],
         ),
       ),
