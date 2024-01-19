@@ -1,5 +1,6 @@
 import 'package:e_commerce/config/network/networkRequest.dart';
 import 'package:e_commerce/core/providers/cart_provider.dart';
+import 'package:e_commerce/core/styling/app_themes.dart';
 import 'package:e_commerce/feature/home_page/presentation/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,16 +24,17 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          appBarTheme: const AppBarTheme(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(100.0),
-              ),
-            ),
-            color: Color.fromRGBO(255, 100, 19, 0.498),
-          ),
-        ),
+        // theme: ThemeData(
+        //   appBarTheme: const AppBarTheme(
+        //     shape: RoundedRectangleBorder(
+        //       borderRadius: BorderRadius.only(
+        //         bottomRight: Radius.circular(100.0),
+        //       ),
+        //     ),
+        //     color: Color.fromRGBO(255, 100, 19, 0.498),
+        //   ),
+        // ),
+        theme: AppThemes.light,
         home: const HomePage(),
       ),
     );

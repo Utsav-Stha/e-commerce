@@ -15,8 +15,11 @@ class CustomAppBar extends StatelessWidget {
         onPressed: () {},
         icon: const Icon(Icons.person_outline_rounded),
       ),
-      title: const Text('PASAL'),
-      titleTextStyle: const TextStyle(letterSpacing: 6.0),
+      title: const Text(
+        'PASAL',
+        // style: TextStyle(color: Colors.black),
+      ),
+
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 14.0),
@@ -54,9 +57,9 @@ class CustomAppBar extends StatelessWidget {
           ),
         )
       ],
-      actionsIconTheme: const IconThemeData(
-        color: Colors.black,
-      ),
+      // actionsIconTheme: const IconThemeData(
+      //   color: Colors.black,
+      // ),
     );
   }
 }

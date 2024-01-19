@@ -9,6 +9,7 @@ class ProductDisplayCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Color.fromRGBO(27, 38, 59, 1),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(8.0, 14.0, 8.0, 14.0),
         child: Stack(
@@ -23,39 +24,69 @@ class ProductDisplayCard extends StatelessWidget {
                     children: [
                       Text(data['title'].toString(),
                           softWrap: true, overflow: TextOverflow.ellipsis),
-                      Text(data['price'].toString()),
+                      Text('\$${data['price'].toString()}'),
                     ],
                   ),
                 ),
                 Column(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.only(right: 30.0),
-                      height: 150,
-                      width: 150,
-                      child: Image.network(
-                        data['image'],
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(14.0),
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(20.0, 8.0, 0, 8.0),
+                        color: Colors.white,
+                        child: Stack(
+                          alignment: Alignment(1, -1),
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.only(right: 30.0),
+                              height: 120,
+                              width: 100,
+                              child: Image.network(
+                                data['image'],
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                            Consumer<CartProvider>(
+                              builder: (context, cartProviderModel, child) {
+                                return Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      IconButton(
+                                        color: Color.fromRGBO(13, 27, 42, 1),
+                                        onPressed: () {
+                                          cartProviderModel.addProduct(data);
+                                        },
+                                        icon: const Icon(
+                                          Icons.favorite_outline_outlined,
+                                        ),
+                                      ),
+                                    ]);
+                              },
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ],
                 ),
               ],
             ),
-            Consumer<CartProvider>(
-              builder: (context, cartProviderModel, child) {
-                return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                  IconButton(
-                    color: Colors.redAccent,
-                    onPressed: () {
-                      cartProviderModel.addProduct(data);
-                    },
-                    icon: const Icon(
-                      Icons.favorite_outline_outlined,
-                    ),
-                  ),
-                ]);
-              },
-            )
+            // Consumer<CartProvider>(
+            //   builder: (context, cartProviderModel, child) {
+            //     return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+            //       IconButton(
+            //         color: Colors.redAccent,
+            //         onPressed: () {
+            //           cartProviderModel.addProduct(data);
+            //         },
+            //         icon: const Icon(
+            //           Icons.favorite_outline_outlined,
+            //         ),
+            //       ),
+            //     ]);
+            //   },
+            // )
           ],
         ),
       ),
