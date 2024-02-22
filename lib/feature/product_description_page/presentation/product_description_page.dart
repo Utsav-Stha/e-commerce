@@ -12,14 +12,17 @@ class ProductDescriptionPage extends StatelessWidget {
       body: ListView(
         children: [
           Center(
-            child: Container(
-              padding: const EdgeInsets.all(8.0),
-              color: Colors.white,
-              width: DeviceSize.getWidth(context),
-              height: DeviceSize.getHeight(context) * 0.4,
-              child: Image.network(
-                data['image'],
-                fit: BoxFit.contain,
+            child: Hero(
+              tag: data['image'],
+              child: Container(
+                padding: const EdgeInsets.all(8.0),
+                color: Colors.white,
+                width: DeviceSize.getWidth(context),
+                height: DeviceSize.getHeight(context) * 0.4,
+                child: Image.network(
+                  data['image'],
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
           ),
