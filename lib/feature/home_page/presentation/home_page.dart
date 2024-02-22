@@ -12,7 +12,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = DeviceSize.getHeight(context);
     return Scaffold(
-      // backgroundColor: const Color.fromRGBO(255, 100, 19, 0.1),
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, height * 0.08),
         child: const CustomAppBar(),
@@ -30,7 +29,7 @@ class HomePage extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   Container(
-                    height: DeviceSize.getHeight(context) * 0.83,
+                    height: DeviceSize.getHeight(context) * 0.8,
                     child: ListView.builder(
                       // physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
